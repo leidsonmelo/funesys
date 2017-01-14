@@ -1,4 +1,4 @@
-angular.module("FuneSysApp").controller("LoginCtrl", function($scope, $window, loginAPI, session){
+angular.module("FuneSysApp").controller("LoginCtrl", function($scope, $window, LoginAPI, session){
 	$scope.toLogin = true;
 	$scope.userLogin = {};
 	$scope.userSingup = {};
@@ -12,7 +12,7 @@ angular.module("FuneSysApp").controller("LoginCtrl", function($scope, $window, l
 	}
 
 	$scope.login = function(){
-		loginAPI.login($scope.userLogin).success(function (data){
+		LoginAPI.login($scope.userLogin).success(function (data){
 			console.log(data);
 			$scope.userLogin = {};
 			if(data){

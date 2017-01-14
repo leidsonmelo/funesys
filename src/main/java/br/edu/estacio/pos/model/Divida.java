@@ -1,7 +1,9 @@
 package br.edu.estacio.pos.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,11 +17,11 @@ public class Divida {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
 	@OneToOne
 	private Associado associado;
-	
-	@OneToMany
+
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Fatura> faturas;
 
 	public Associado getAssociado() {
@@ -31,11 +33,20 @@ public class Divida {
 	}
 
 	public List<Fatura> getFaturas() {
+		if (faturas == null)
+			faturas = new ArrayList<Fatura>();
 		return faturas;
 	}
 
 	public void setFaturas(List<Fatura> faturas) {
 		this.faturas = faturas;
 	}
-	
+
+	public void adicionarFatura(Double valor) {
+		Fatura fatura = new Fatura();
+		fatura.setDivida(this);
+		fatura.setValor(valor);
+		getFaturas().add(fatura);
+	}
+
 }

@@ -2,6 +2,8 @@ package br.edu.estacio.pos.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.assertj.core.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +17,15 @@ public class AssociadoService implements IAssociadoService {
 	@Autowired
 	private AssociadoRepository repository;
 	
+	@Autowired
+	private IDividaService dividaService;
+	
 	@Override
+	@Transactional
 	public Associado save(Associado associado) {
-		return repository.save(associado);
+		associado = repository.save(associado);
+		dividaService.startDebit(associado);
+		return associado;
 	}
 
 	@Override

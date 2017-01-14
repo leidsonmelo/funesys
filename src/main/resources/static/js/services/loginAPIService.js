@@ -1,4 +1,4 @@
-angular.module("routesapp").factory("loginAPI", function($http, config){
+angular.module("FuneSysApp").factory("LoginAPI", function($http, config){
 	
 	var _login = function(user){
 		return $http.post(config.baseUrlLogin + "/login", user);

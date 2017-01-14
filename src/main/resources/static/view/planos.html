@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="FuneSysApp">
+  <head>
+  	<meta charset="utf-8">
+    
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+    
+    <script type="text/javascript" src="../lib/angular/angular.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/value/configValue.js"></script>
+    <script src="../js/controllers/planoCtrl.js"></script>
+    <script src="../js/services/planoService.js"></script>
+    
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body ng-controller="PlanoCtrl">
+  	<div class="had-container">
+	  	<div ng-include="'components/navbar.html'"></div>
+	  	<div class="section">
+	  		<div class="row">
+	  			<div class="col s12">
+					<!-- Modal Trigger -->
+					<a class="waves-effect waves-light btn right" href="#modalPlano">Adicionar Plano</a>
+			
+					<!-- Modal Structure -->
+					<div id="modalPlano" class="modal">
+						<div class="modal-content">
+							<h4>Adicionar Plano</h4>
+							<div class="row">
+								<form class="col s12">
+									<div class="row">
+										<div class="input-field col s6">
+          									<input ng-model="plano.nome" placeholder="Nome" id="nome" type="text" class="validate">
+          									<label for="first_name">Nome</label>
+								        </div>
+								        <div class="input-field col s6">
+								        	<input ng-model="plano.valor" id="valor" type="text" class="validate">
+									        <label for="valor">Valor</label>
+									    </div>
+									</div>
+									<div class="row">
+										<div class="input-field col s12">
+          									<textarea ng-model="plano.vantagens" id="vantagens" class="materialize-textarea"></textarea>
+          									<label for="vantagens">Benefícios</label>
+        								</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" ng-click="savePlano(plano)">Salvar</a>
+						</div>
+					</div>
+	  			</div>
+	  		</div>
+	  		<div class="row">
+	  			<div class="col s12">
+		  			<table class="bordered highlight responsive-table">
+						<thead>
+							<tr>
+								<th data-field="id">Nome</th>
+								<th data-field="name">Preço</th>
+								<th data-field="price">Beneficios</th>
+								<th>Excluir</th>
+							</tr>
+						</thead>
+			
+						<tbody>
+							<tr ng-repeat="plano in planos">
+								<td>{{plano.nome}}</td>
+								<td>{{plano.valor}}</td>
+								<td>{{plano.vantagens}}</td>
+								<td><a ng-click="delete(plano)" href="#"><i class="material-icons">delete</i></a></td>
+							</tr>
+						</tbody>
+					</table>
+	  			</div>
+	  		</div>
+  		</div>
+  	</div>
+
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../js/materialize.min.js"></script>
+    <script type="text/javascript" src="../js/init.js"></script>
+</body>
+</html>

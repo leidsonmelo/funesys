@@ -30,7 +30,8 @@
 						<thead>
 							<tr>
 								<th data-field="id">Associado</th>
-								<th data-field="name">Valor</th>
+								<th data-field="valor">Valor</th>
+								<th data-field="status">Status</th>
 								<th>Excluir</th>
 							</tr>
 						</thead>
@@ -39,6 +40,7 @@
 							<tr ng-repeat="fatura in faturas">
 								<td>{{fatura.divida.associado.nome}}</td>
 								<td>{{fatura.valor}}</td>
+								<td>{{fatura.pagamento != null ? 'Pago' : 'Pendente'}}</td>
 								<td><a ng-click="delete(fatura)" href="#"><i class="material-icons">delete</i></a></td>
 							</tr>
 						</tbody>

@@ -1,6 +1,6 @@
 package br.edu.estacio.pos.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Entity;
 
@@ -9,6 +9,15 @@ public class Debito extends Pagamento {
 
 	private Date dataAgendamento;
 
+	public Debito(){
+		
+	}
+	
+	public Debito(Date dataAgendamento, Double valor){
+		this.setDataAgendamento(dataAgendamento);
+		this.setValor(valor);
+	}
+	
 	@Override
 	public String imprimir() {
 		return "PAGAMENTO EM DÉBITO";

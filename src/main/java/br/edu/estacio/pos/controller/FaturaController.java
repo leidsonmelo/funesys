@@ -35,4 +35,22 @@ public class FaturaController {
 		return new ResponseEntity<Fatura>(HttpStatus.OK);		
 	}
 	
+	@RequestMapping(value="pagarDebibo", method=RequestMethod.POST)
+	public ResponseEntity<Fatura> pagarDebito(@RequestBody Fatura fatura){
+		service.pagarDebito(fatura);
+		return new ResponseEntity<Fatura>(HttpStatus.OK);		
+	}
+	
+	@RequestMapping(value="pagarCarne", method=RequestMethod.POST)
+	public ResponseEntity<Fatura> pagarCarne(@RequestBody Fatura fatura){
+		service.pagarCarne(fatura);
+		return new ResponseEntity<Fatura>(HttpStatus.OK);		
+	}
+	
+	@RequestMapping(value="pagarBoleto", method=RequestMethod.POST)
+	public ResponseEntity<Fatura> pagarBoleto(@RequestBody Fatura fatura){
+		service.pagarBoleto(fatura);
+		return new ResponseEntity<Fatura>(HttpStatus.OK);		
+	}
+	
 }

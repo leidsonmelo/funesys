@@ -24,6 +24,14 @@ public class Divida {
 	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Fatura> faturas;
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public Associado getAssociado() {
 		return associado;
 	}

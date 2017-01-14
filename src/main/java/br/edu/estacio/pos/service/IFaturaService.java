@@ -9,5 +9,11 @@ public interface IFaturaService {
 	List<Fatura> findAll();
 
 	void delete(Fatura fatura);
+
+	void pagarDebito(Fatura fatura);
+
+	void pagarCarne(Fatura fatura);
+
+	void pagarBoleto(Fatura fatura);
 	
 }

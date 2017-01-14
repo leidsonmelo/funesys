@@ -1,5 +1,6 @@
 package br.edu.estacio.pos.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,13 +14,13 @@ public class Fatura {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
 	@ManyToOne
 	private Divida divida;
-	
+
 	private Double valor;
-	
-	@OneToOne
+
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private Pagamento pagamento;
 
 	public Divida getDivida() {
@@ -52,6 +53,10 @@ public class Fatura {
 
 	public void setValor(Double valor) {
 		this.valor = valor;
+	}
+
+	public void pagar(Pagamento pagamento) {
+		this.pagamento = pagamento;
 	}
 
 }

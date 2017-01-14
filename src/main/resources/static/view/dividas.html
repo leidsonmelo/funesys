@@ -33,6 +33,7 @@
 								<th data-field="valor">Valor</th>
 								<th data-field="status">Status</th>
 								<th>Excluir</th>
+								<th>Pagar</th>
 							</tr>
 						</thead>
 			
@@ -42,6 +43,11 @@
 								<td>{{fatura.valor}}</td>
 								<td>{{fatura.pagamento != null ? 'Pago' : 'Pendente'}}</td>
 								<td><a ng-click="delete(fatura)" href="#"><i class="material-icons">delete</i></a></td>
+								<td>
+									<a class="waves-effect waves-light btn" href="#" ng-click="pagarFaturaDebito(fatura)">Debito</a>
+									<a class="waves-effect waves-light btn" href="#" ng-click="pagarFaturaCarne(fatura)">Carnê</a>
+									<a class="waves-effect waves-light btn" href="#" ng-click="pagarFaturaBoleto(fatura)">Boleto</a>
+								</td>
 							</tr>
 						</tbody>
 					</table>
